@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.utgaming.jcc.CardSystem.repository.CardRepository">
+
+    <!-- 结果映射 -->
+    <resultMap id="CardResultMap" type="com.utgaming.jcc.CardSystem.entity.Card">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="rarity" column="rarity"/>
+        <result property="level" column="level"/>
+        <result property="attack" column="attack"/>
+        <result property="health" column="health"/>
+        <result property="armor" column="armor"/>
+        <result property="magicResist" column="magic_resist"/>
+        <result property="critRate" column="crit_rate"/>
+        <result property="critDamage" column="crit_damage"/>
+        <result property="moveSpeed" column="move_speed"/>
+        <result property="attackSpeed" column="attack_speed"/>
+        <result property="description" column="description"/>
+        <result property="imageUrl" column="image_url"/>
+        <result property="cost" column="cost"/>
+    </resultMap>
+
+    <!-- 根据ID查询卡牌 -->
+    <select id="findById" resultMap="CardResultMap">
+        SELECT * FROM cards WHERE id = #{id}
+    </select>
+
+    <!-- 查询所有卡牌 -->
+    <select id="findAll" resultMap="CardResultMap">
+        SELECT * FROM cards ORDER BY id
+    </select>
+
+    <!-- 根据类型查询卡牌 -->
+    <select id="findByType" resultMap="CardResultMap">
+        SELECT * FROM cards WHERE type = #{type} ORDER BY id
+    </select>
+
+    <!-- 根据稀有度查询卡牌 -->
+    <select id="findByRarity" resultMap="CardResultMap">
+        SELECT * FROM cards WHERE rarity = #{rarity} ORDER BY id
+    </select>
+
+    <!-- 根据等级查询卡牌 -->
+    <select id="findByLevel" resultMap="CardResultMap">
+        SELECT * FROM cards WHERE level = #{level} ORDER BY id
+    </select>
+
+    <!-- 根据费用查询卡牌 -->
+    <select id="findByCost" resultMap="CardResultMap">
+        SELECT * FROM cards WHERE cost = #{cost} ORDER BY id
+    </select>
+
+    <!-- 根据名称模糊查询卡牌 -->
+    <select id="findByNameLike" resultMap="CardResultMap">
+        SELECT * FROM cards WHERE name LIKE CONCAT('%', #{name}, '%') ORDER BY id
+    </select>
+
+    <!-- 查询可用卡牌 -->
+    <select id="findActiveCards" resultMap="CardResultMap">
+        SELECT * FROM cards WHERE is_active = true ORDER BY id
+    </select>
+
+    <!-- 统计卡牌总数 -->
+    <select id="countAll" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM cards
+    </select>
+
+    <!-- 批量插入卡牌 -->
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO cards (
+            name, type, rarity, level, attack, health, armor, magic_resist,
+            crit_rate, crit_damage, move_speed, attack_speed, description,
+            image_url, icon_url, cost, is_active, create_time, update_time
+        ) VALUES
+        <foreach collection="cards" item="card" separator=",">
+            (
+                #{card.name}, #{card.type}, #{card.rarity}, #{card.level}, #{card.attack}, #{card.health}, #{card.armor}, #{card.magicResist},
+                #{card.critRate}, #{card.critDamage}, #{card.moveSpeed}, #{card.attackSpeed}, #{card.description},
+                #{card.imageUrl}, #{card.iconUrl}, #{card.cost}, #{card.isActive}, #{card.createTime}, #{card.updateTime}
+            )
+        </foreach>
+    </insert>
+
+</mapper>
