@@ -60,6 +60,20 @@
             <version>3.0.5</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Swagger 核心依赖（提供 @Api、@ApiOperation 等注解） -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version> <!-- 常用版本，需与 Spring Boot 版本兼容 -->
+        </dependency>
+
+        <!-- Swagger UI 依赖（提供可视化文档界面） -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
     </dependencies>
 
     <build>

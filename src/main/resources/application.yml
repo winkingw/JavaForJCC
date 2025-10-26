@@ -1,8 +1,10 @@
 server:
-  port: 8888  # 冒号后加空格
+  servlet:
+    context-path: /apis
+  port: 8888
 
 spring:
-  datasource:  # MySQL数据源配置（直接子节点，无需重复spring.datasource前缀）
+  datasource:
     url: jdbc:mysql://localhost:3306/jinchanchan
     username: root
     password: 242859
