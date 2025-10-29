@@ -37,8 +37,8 @@ public class CardController {
         try {
             // 1. 检测金币是否足够
             Result<Boolean> hasEnoughCoins = cardServiceImpl.checkPlayerCoins(playerId);
-            if (!hasEnoughCoins) {
-                return "金币不足，无法抽卡";
+            if (hasEnoughCoins == null || hasEnoughCoins.getData() == null || !hasEnoughCoins.getData()) {
+                return Result.error("金币不足，无法抽卡");
             }
             
             // 2. 检测角色空位
@@ -51,7 +51,7 @@ public class CardController {
             return cardServiceImpl.drawCard(playerId);
         } catch (Exception e) {
             log.error("抽卡失败，玩家ID: {}", playerId, e);
-            return "抽卡失败，请稍后重试";
+            return Result.error("抽卡失败，请稍后重试");
         }
     }
     
