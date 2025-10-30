@@ -5,4 +5,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
+    public boolean checkUser(Long userId) {
+        //TODO
+        return true;
+    }
 }

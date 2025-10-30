@@ -1,4 +1,4 @@
-package com.utgaming.jcc.System.BattleSystem.controller;
+package com.utgaming.jcc.System.RoundSystem.controller;
 
 import com.utgaming.jcc.System.common.Result;
 import io.swagger.annotations.Api;

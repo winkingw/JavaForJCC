@@ -14,15 +14,4 @@ import java.util.*;
 @Slf4j
 @Api("海克斯城邦选择")
 public class HexController {
-    @GetMapping("/list")
-    @ApiOperation("查询可选城邦（示例数据）")
-    public Result<List<String>> list() {
-        return Result.success(Arrays.asList("皮尔特沃夫", "祖安"));
-    }
-
-    @PostMapping("/select")
-    @ApiOperation("选择城邦（示例数据）")
-    public Result<String> select(@RequestParam Long userId, @RequestParam String city) {
-        return Result.success(city);
-    }
 }
