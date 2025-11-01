@@ -1,10 +1,10 @@
-package com.utgaming.jcc.System.CoinSystem.controller;
+package com.utgaming.jcc.System.UserSystem.controller;
 
 import com.utgaming.jcc.System.common.Result;
+import com.utgaming.jcc.staticData.Constant.MessageConstant;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -24,21 +24,21 @@ public class CoinController {
     @GetMapping("/balance/{userId}")
     @ApiOperation("查询用户金币余额")
     public Result<Integer> getBalance(@PathVariable Long userId) {
-        Integer coins = (Integer) valueOperations.get("userId:coins:" + userId);
+        Integer coins = (Integer) valueOperations.get(MessageConstant.USER_COIN + userId);
         return Result.success(coins);
     }
 
     @PostMapping("/gain")
     @ApiOperation("增加金币")
     public Result gain(@RequestParam Long userId, @RequestParam Integer amount) {
-        valueOperations.increment("userId:coins:" + userId, amount);
+        valueOperations.increment(MessageConstant.USER_COIN + userId, amount);
         return Result.success();
     }
 
     @PostMapping("/consume")
     @ApiOperation("消耗金币")
     public Result consume(@RequestParam Long userId, @RequestParam Integer amount) {
-        valueOperations.increment("userId:coins:" + userId,-1 * amount);
+        valueOperations.increment(MessageConstant.USER_COIN + userId,-1 * amount);
         return Result.success();
     }
 }
