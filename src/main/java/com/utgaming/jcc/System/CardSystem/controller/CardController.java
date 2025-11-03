@@ -2,7 +2,7 @@ package com.utgaming.jcc.System.CardSystem.controller;
 
 import com.utgaming.jcc.Service.Impl.CardServiceImpl;
 import com.utgaming.jcc.Service.Impl.UserServiceImpl;
-import com.utgaming.jcc.System.common.Result;
+import com.utgaming.jcc.staticData.Common.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

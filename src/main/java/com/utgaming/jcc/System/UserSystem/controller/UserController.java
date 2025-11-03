@@ -1,10 +1,11 @@
 package com.utgaming.jcc.System.UserSystem.controller;
 
 import com.utgaming.jcc.Service.UserService;
-import com.utgaming.jcc.System.common.Result;
+import com.utgaming.jcc.staticData.Common.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -15,6 +16,7 @@ import java.util.*;
 @Slf4j
 @Api("用户系统")
 public class UserController {
+    @Autowired
     private UserService userService;
 
     @GetMapping("/{userId}")

@@ -2,11 +2,10 @@ package com.utgaming.jcc.System.HexSystem.controller;
 
 import com.utgaming.jcc.Service.HexService;
 import com.utgaming.jcc.Service.RoundService;
-import com.utgaming.jcc.System.common.Result;
+import com.utgaming.jcc.staticData.Common.Result;
 import com.utgaming.jcc.staticData.Constant.MessageConstant;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SetOperations;
@@ -21,12 +20,14 @@ import org.springframework.web.bind.annotation.*;
 public class HexController {
     @Autowired
     private RedisTemplate redisTemplate;
+    @Autowired
     private HexService hexService;
+    @Autowired
     private RoundService roundService;
 
     @GetMapping("/hex/{userId}")
     public Result<Integer> HexChoose(@PathVariable Long userId){
-        Integer hexId = hexService.HexChoose(roundService.hexType());
+        Integer hexId = hexService.HexChoose(hexService.hexType());
 
         if(hexId == null)
             return Result.error(MessageConstant.WRONG_ROUND);
@@ -41,8 +42,10 @@ public class HexController {
     @GetMapping("/state")
     public Result<Integer> StateChoose(){
         Integer stateId = hexService.StateChoose(roundService.roundCheck());
+
         if(stateId == null)
             return Result.error(MessageConstant.WRONG_ROUND);
+
         return Result.success(stateId);
     }
 }

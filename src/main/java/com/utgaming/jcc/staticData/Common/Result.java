@@ -1,4 +1,4 @@
-package com.utgaming.jcc.System.common;
+package com.utgaming.jcc.staticData.Common;
 
 import lombok.Data;
 

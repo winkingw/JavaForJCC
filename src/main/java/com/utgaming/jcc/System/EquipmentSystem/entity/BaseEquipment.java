@@ -4,12 +4,12 @@ import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-/**
- * 装备实体类
- */
+import java.util.List;
+
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class BaseEquipment extends Equipments{
-
+    List<AdvancedEquipment> advancedEquipments;
 }

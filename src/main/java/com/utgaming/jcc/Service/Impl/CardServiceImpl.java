@@ -2,7 +2,7 @@ package com.utgaming.jcc.Service.Impl;
 
 
 import com.utgaming.jcc.Service.CardService;
-import com.utgaming.jcc.System.common.Result;
+import com.utgaming.jcc.staticData.Common.Result;
 import org.springframework.stereotype.Service;
 
 /**

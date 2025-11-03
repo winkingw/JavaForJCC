@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * 用户卡牌实体类
  */
@@ -20,7 +22,7 @@ public class User {
 
     private Integer coins;
 
-    private Card card;
+    private List<Card> cards;
 
-    private Equipments equipment;
+    private List<Equipments> equipment;
 }

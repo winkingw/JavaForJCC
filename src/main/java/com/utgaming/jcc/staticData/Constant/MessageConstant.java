@@ -5,7 +5,7 @@ public class MessageConstant {
     public static final String HEX_ROUND_2 = "3-2";
     public static final String HEX_ROUND_3 = "4-2";
 
-    public static final String STATE_ROUND = "0-0";
+    public static final String STATE_ROUND = "1-1";
 
     public static final String CHOOSE_1 = "2-4";
     public static final String CHOOSE_2 = "3-4";
@@ -18,5 +18,10 @@ public class MessageConstant {
 
     public static final String USER_COIN = "userId:coins:";
     public static final String USER_HEX = "userId:hex:";
+    public static final String USER_EQUIPMENTS = "userId:equipments:";
     public static final String STATE = "staticData:state";
+    public static final String GAMESTATE = "gameStaticData:state";
+    public static final String ROUND = "gameStaticData:round";
+    public static final String ROUNDSEARCH = "gameStaticData:roundsearch";
+
 }

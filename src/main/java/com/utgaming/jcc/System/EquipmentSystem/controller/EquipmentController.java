@@ -1,32 +1,26 @@
 package com.utgaming.jcc.System.EquipmentSystem.controller;
 
+import com.utgaming.jcc.Service.EquipService;
 import com.utgaming.jcc.System.EquipmentSystem.entity.Equipments;
-import com.utgaming.jcc.System.common.Result;
+import com.utgaming.jcc.staticData.Common.Result;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.List;
 
 @RestController
-@RequestMapping("/equipments")
+@RequestMapping("/cards")
 @CrossOrigin(origins = "*")
 @Slf4j
 @Api("装备系统交互")
 public class EquipmentController {
-    @GetMapping("/list")
-    @ApiOperation("查询装备列表（示例数据）")
-    public Result<List<Equipments>> list() {
-        return Result.success(Collections.emptyList());
-    }
+    @Autowired
+    private EquipService equipService;
 
-    @GetMapping("/{id}")
-    @ApiOperation("查看装备详情（示例数据）")
-    public Result<Map<String, Object>> detail(@PathVariable Long id) {
-        Map<String, Object> data = new HashMap<>();
-        data.put("id", id);
-        data.put("name", "示例装备");
-        return Result.success(data);
+    @GetMapping("/equipments/{userId}")
+    public Result<List<Equipments>> getEquipments(@PathVariable String userId) {
+        return Result.success(equipService.getEquipments(userId));
     }
 }

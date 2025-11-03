@@ -1,6 +1,6 @@
 package com.utgaming.jcc.Service;
 
-import com.utgaming.jcc.System.common.Result;
+import com.utgaming.jcc.staticData.Common.Result;
 
 public interface CardService {
     Result<boolean> checkPlayerCoins(Long playerId);
